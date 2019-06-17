@@ -1,5 +1,4 @@
 ---
-layout: post
 title:  "Hello Jekyll - my first post on Github Pages"
 categories:
   - blog
