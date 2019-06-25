@@ -1,0 +1,1 @@
+In my family there is a running joke that I could use the computer before I could talk - my dad was a software engineer, and used to bring a computer home after work so that I could play. I guess you can blame him for the following decades of my IT obsession. 
