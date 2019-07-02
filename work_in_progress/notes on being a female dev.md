@@ -1,1 +1,25 @@
 In my family there is a running joke that I could use the computer before I could talk - my dad was a software engineer, and used to bring a computer home after work so that I could play. I guess you can blame him for the following decades of my IT obsession. 
+
+
+I am very happy that the author and many other commenting ladies have never experienced any form of discrimination. It is hugely reassuring that, with a bit of luck, one can go through quite a few years of career without even thinking about it.
+
+My own experience, and what I hear about from my female mentees, is somewhat more varied. Personally, I have benefited from being a woman, getting onto an extra program specifically intended to keep females in more senior tech positions, giving me opportunity to attend various training courses. In vast majority of my teams, most of my team mates were great and I felt greatly respected. Many of them, having worked with me years ago, pulled me into other projects they were working on - IMO nothing tells you more that someone enjoyed working with you than this.
+
+However. There were also situations, of varying shades of grey, where I felt anything from amusement to discomfort.
+A few from the top of my head for the "small things" ?
+- interviewing someone for my team, with a male colleague who is on another (we both introduce ourselves, so it's not like the candidate doesn't know who's who). I ask a question, the candidate clearly directs his answer to my colleague
+- the surprises / disbelief on the faces of people freshly met (conferences / meetups) that yes, I am a backend developer (apparently the rarest of the rare unicorns), sometimes followed by some random semi-interview style questions, as if intended to check if I actually know anything in my area
+- a handful of ex-colleagues who would always question and challenge my ideas, never doing this to "the boys", despite being proven again and again that I was right. There was one particular person I remember, and he did exactly the same thing to one other female dev we had on the team (who happened to be incredibly smart and talented, and her ideas and work were great)
+
+In the "bigger things" category:
+- early in my career, I was often pushed out of hard technical problems and more into "get stuff done/chase people up" things. I had to actively and very consciously fight it, to avoid being pushed into managerial route. I have lost the count of my mentees who are telling me exactly same thing - as apparently, women are just so much better in organising things. If you're not careful, you can easily stop being up-to-date with technologies, and get stuck in one place. I don't see this happening as often to my male mentees
+
+- I see men being pushed out of their comfort zone by their managers way more than I've seen it with female reports. I mean things like - assigning research on technology that is new to the team, doing a task with a lot of unknowns, having to pick up new responsibilities. In the past, where we had 2 data science people on the team, one male one female, I had to keep reminding my own manager that BOTH of them should be invited e.g. to a conference we were going, and not just the guy. This allows the guys to progress their careers way faster - you get promoted for what you did, not for potential. If the managers give more new things to guys, of course the men will be promoted ahead of women.
+
+- in one of my jobs during annual performance review, where I heard praise and praise, I have put explicit number for what I am expecting as pay increase, as by this point I knew I was heavily underpaid compared to my colleagues. The company have given me half that. So I went out, found a new job (which paid exactly what I wanted) and after putting my notice down, I got an offer to match the offer, with something along the lines of "we didn't realise how serious you were". I am absolutely convinced they've never done anything similar to the men working there.
+
+Now, of course none of that is a terrible traumatic experience, thankfully sexual assault is nothing I've ever experienced or even been told about - but that's not the point. These subtle, sometimes very subtle, pushbacks are the reason why females don't end up in more senior positions nowhere near as often as men (statistically). They are a reason why we still earn less. There is research very clearly showing that women DO ask for raises - they just don't get them (or not as big - just as my own experience was). And, most importantly, they are a reason why some slightly less confident women leave the field.
+
+I do strongly believe that there are plenty of good teams out there - I was on many, vast majority of my colleagues were good people. The bad apples might be few - but there are still too many. And some biases are so subtle, that you may be applying them even without thinking.
+
+And the big elephant in the room. Pregnancy/early child care often throws a massive spanner in the works. I do wonder how many of the females who don't see a problem now will change their mind when they go out on maternity.
