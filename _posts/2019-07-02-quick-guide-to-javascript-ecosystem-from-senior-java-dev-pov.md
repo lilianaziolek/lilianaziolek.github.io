@@ -1,7 +1,11 @@
 ---
 title:  "A (super)quick guide to VueJS ecosystem - from senior Java dev point of view"
 categories:
-  - javascript, java, vuejs, nuxt, high-level
+  - javascript
+  - java
+  - vuejs
+  - nuxt
+  - high-level
 ---
 
 # JavaScript ecosystem in a nutshell
