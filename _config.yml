@@ -86,7 +86,7 @@ defaults:
       layout: single
       author_profile: false
       read_time: true
-#      comments: true
+      comments: true
       share: true
       related: false
       toc: true
@@ -97,6 +97,11 @@ defaults:
     values:
       layout: single
       author_profile: true
+
+comments:
+  provider               : "disqus"
+  disqus:
+    shortname            : "osbo-tech-blog"
 
 category_archive:
   type: liquid
