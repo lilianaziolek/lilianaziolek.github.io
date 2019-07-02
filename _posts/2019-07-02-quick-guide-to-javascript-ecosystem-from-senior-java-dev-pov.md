@@ -10,10 +10,10 @@ At the end of 2016 or beginning of 2017 I came across this [blog post](https://h
 Now, 2.5 years later and many many lines of Vue code later, I want to make the front-end world a little bit less intimidating for folks who are like me (back then). Competent / senior Java devs, who for this reason or other (choice or circumstances) did not get much experience doing (much) front-end work, and are not really sure where to start.
 
 # Java ecosystem in a nutshell
-When you stop and think for a moment, Java world is also way more than just Java once it comes to anything more than HelloWorld. I used to mentor a few junior developers, and I recently felt a little bit sorry for the steep learning curve they must face. If you join a modern project these days, from day one you'll probably come across a number of the following names (in no particular order):\
-Maven / Gradle; Spring, Spring JDBC, Spring MVC, Spring Boot, Spring Cloud, Spring ... ; Hibernate; Lombok, Guava, Apache Commons; Jackson, GSON, Jaxb; Spark; Camel; JMS; Tomcat, Jetty, Netty; Eureka, Hystrix, Ribbon; JUnit, Mockito, AssertJ, Cucumber; Slf4j, Logback, Log4j; Docker\
-*Not to mention*: traditional DBs + SQL; MongoDB; Elasticsearch; Cassandra; Neo4j; Couchbase; Kafka; Ehcache, ...\
-*And also*: AWS, Google Cloud Platform, Azure - all with their respective hundreds of products.\
+When you stop and think for a moment, Java world is also way more than just Java once it comes to anything more than HelloWorld. I used to mentor a few junior developers, and I recently felt a little bit sorry for the steep learning curve they must face. If you join a modern project these days, from day one you'll probably come across a number of the following names (in no particular order):  
+Maven / Gradle; Spring, Spring JDBC, Spring MVC, Spring Boot, Spring Cloud, Spring ... ; Hibernate; Lombok, Guava, Apache Commons; Jackson, GSON, Jaxb; Spark; Camel; JMS; Tomcat, Jetty, Netty; Eureka, Hystrix, Ribbon; JUnit, Mockito, AssertJ, Cucumber; Slf4j, Logback, Log4j; Docker  
+*Not to mention*: traditional DBs + SQL; MongoDB; Elasticsearch; Cassandra; Neo4j; Couchbase; Kafka; Ehcache, ...  
+*And also*: AWS, Google Cloud Platform, Azure - all with their respective hundreds of products.  
 And that's just stuff from the top of my head, a tip of the iceberg. There is just so much more.
 
 Most of us don't really think about it because we're already familiar with this stack. We add tools and frameworks as and when we need them, we learn another thing, we move on. It's when you look at all of this in one place, from the perspective of a newbie, that you realise the number of moving parts involved.
