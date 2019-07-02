@@ -83,7 +83,7 @@ Technically, there isn't much of code to show here. Nuxt has a great generator f
 ```bash
 yarn create nuxt-app plain-nuxt-app
 ```
-It will ask you a couple of questions about what you want included in your project. An example with choices equivalent to what we have in our project can be found in [examples/plain-nuxt-app](/examples/plain-nuxt-app)
+It will ask you a couple of questions about what you want included in your project. An example with choices equivalent to what we have in our project can be found in [examples/plain-nuxt-app](https://github.com/lilianaziolek/blog-examples/plain-nuxt-app)
 The linting configuration that comes enabled by default is super strict so you might want to skip it if you are only just starting - otherwise you can get some scary looking confusing errors and warnings.
 
 And that's all for today, folks. If any of the points or topics above is particularly interesting, please comment/request more info below! 
