@@ -50,7 +50,7 @@ plugins:
 author:
   name   : "Liliana Ziolek"
   avatar : "/assets/images/bio-photo.jpg"
-  bio    : "Years and years of Java development. Now trying to run One Stop Beauty Online. Still loads of Java, plus other new toys."
+  bio    : "Years and years of Java development. Now building One Stop Beauty Online. Still loads of Java, plus other new toys."
   links:
     - label: "Website"
       icon: "fas fa-fw fa-link"
