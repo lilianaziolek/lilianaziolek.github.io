@@ -89,3 +89,5 @@ It will ask you a couple of questions about what you want included in your proje
 The linting configuration that comes enabled by default is super strict so you might want to skip it if you are only just starting - otherwise you can get some scary looking confusing errors and warnings.
 
 And that's all for today, folks. If any of the points or topics above is particularly interesting, please comment/request more info below! 
+
+(6)
