@@ -98,8 +98,7 @@ public class OsboDomNode {
 </details>
 
 <details>
-<summary><b>OsboPerfHelper</b> - a simple runner, you put in the URL of your website (could even be localhost), it goes off, reads the DOM structure, and then we feed it into the OsboDomNode to be analysed.
-</summary>
+<summary><b>OsboPerfHelper</b> - a simple runner, you put in the URL of your website (could even be localhost), it goes off, reads the DOM structure, and then we feed it into the OsboDomNode to be analysed.</summary>
 <p>
 
 ```java
@@ -147,8 +146,8 @@ public class OsboPerfHelper {
 }
 
 ```
-</p>
-</details>
+
+</p></details>
 
 <details><summary>Respective build.gradle file</summary>
 <p>
@@ -180,8 +179,8 @@ dependencies {
 }
 
 ```
-</p>
-</details>
+
+</p></details>
 
 Oh yes, I use Lombok for constructors, builders and other boilerplate (getters etc.) - just because Lombok is awesome and it's the first thing I always add to any Java project. Just remember to add Lombok plugin and turn on annotation processing in IntelliJ, otherwise you'll get compilation errors.
 
