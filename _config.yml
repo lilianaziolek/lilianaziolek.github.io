@@ -16,7 +16,7 @@ search: false
 
 
 # Build settings
-markdown: kramdown
+markdown: CommonMarkGhPages
 # Outputting
 permalink: /:categories/:title/
 paginate: 5 # amount of posts to show
