@@ -152,7 +152,7 @@ public class OsboPerfHelper {
 <details><summary>Respective build.gradle file</summary>
 <p>
 
-```
+```groovy
 plugins {
     id 'java'
 }
