@@ -17,42 +17,12 @@ So, I quickly knocked out a tool to help us find the "DOM bottlenecks". And as I
 The principle is actually really simple, and similar to how you'd go around finding where all the space on your hard drive goes if you suddenly run out of space. You find the biggest folder. Then the biggest folder in the biggest folder. And so on, until you something suspicious - a folder bigger than you would normally expect.
 
 In order to do that without spending too much time writing the tool itself (ultimately it took me maybe 30mins) I decided to use JSoup (to parse the DOM tree from our website), and Jackson - to print the results nicely, as I can then easily collapse/expand JSON in IntelliJ (helpful hint: open any .json file and press **CTRL-ALT-L** to nicely indent a single massive line of JSON).
-<details><summary>Respective build.gradle file</summary>
-
-```
-plugins {
-    id 'java'
-}
-
-group 'online.onestopbeauty.blog.examples'
-version '1.0-SNAPSHOT'
-
-sourceCompatibility = 1.8
-
-repositories {
-    mavenCentral()
-}
-
-dependencies {
-// https://mvnrepository.com/artifact/org.jsoup/jsoup
-    compile group: 'org.jsoup', name: 'jsoup', version: '1.12.1'
-// https://mvnrepository.com/artifact/org.projectlombok/lombok
-    compileOnly group: 'org.projectlombok', name: 'lombok', version: '1.18.8'
-// https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind
-    compile group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.9.9'
-
-
-    testCompile group: 'junit', name: 'junit', version: '4.12'
-}
-
-```
-</details>
-
 
 The full result is in [Github Repo](https://github.com/lilianaziolek/blog-examples/tree/master/lighhouse-performance-issues) in folder **Lighthouse Performance Issues** (I have a feeling we might need more stuff to help us with Lighthouse reports).
 There are two classes in the project:
-<details><summary>**OsboDomNode** - a class representing DOM in terms of what we care about: total number of child (and grand... child nodes), and some basic stats on direct children. It uses recursive functions to aggregate total number of nodes in each of the DOM elements.
+<details><summary><b>OsboDomNode</b> - a class representing DOM in terms of what we care about: total number of child (and grand... child nodes), and some basic stats on direct children. It uses recursive functions to aggregate total number of nodes in each of the DOM elements.
 </summary>
+<p>
 
 ```java
 package online.onestopbeauty.blog.examples.lighthouse.dom;
@@ -123,14 +93,14 @@ public class OsboDomNode {
         return builder.build();
     }
 }
-        
-
 ```
+</p>
 </details>
 
 <details>
-<summary>**OsboPerfHelper** - a simple runner, you put in the URL of your website (could even be localhost), it goes off, reads the DOM structure, and then we feed it into the OsboDomNode to be analysed.
+<summary><b>OsboPerfHelper</b> - a simple runner, you put in the URL of your website (could even be localhost), it goes off, reads the DOM structure, and then we feed it into the OsboDomNode to be analysed.
 </summary>
+<p>
 
 ```java
 package online.onestopbeauty.blog.examples.lighthouse.dom;
@@ -177,9 +147,43 @@ public class OsboPerfHelper {
 }
 
 ```
+</p>
 </details>
 
-Oh yes, I use Lombok for constructors, builders and other boilerplate (getters etc.) - just because Lombok is awesome and it's the first thing I always add to any Java project.
+<details><summary>Respective build.gradle file</summary>
+<p>
+
+```
+plugins {
+    id 'java'
+}
+
+group 'online.onestopbeauty.blog.examples'
+version '1.0-SNAPSHOT'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+// https://mvnrepository.com/artifact/org.jsoup/jsoup
+    compile group: 'org.jsoup', name: 'jsoup', version: '1.12.1'
+// https://mvnrepository.com/artifact/org.projectlombok/lombok
+    compileOnly group: 'org.projectlombok', name: 'lombok', version: '1.18.8'
+// https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind
+    compile group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.9.9'
+
+
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+}
+
+```
+</p>
+</details>
+
+Oh yes, I use Lombok for constructors, builders and other boilerplate (getters etc.) - just because Lombok is awesome and it's the first thing I always add to any Java project. Just remember to add Lombok plugin and turn on annotation processing in IntelliJ, otherwise you'll get compilation errors.
 
 So how did things look like for us when running on the live version?
 The first few levels of nodes looked fairly healthy, with body and direct subnodes containing around 99% of nodes each (simply a few layers of wrappers, nothing to worry about).
