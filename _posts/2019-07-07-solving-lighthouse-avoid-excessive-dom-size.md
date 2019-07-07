@@ -10,11 +10,13 @@ tags:
 ---
 Recently we started looking a bit into [OSBO](https://www.onestopbeauty.online) performance. As the page was built mostly at the time when we didn't understand front-end development that well (British for: *we had no idea what we were doing*), plus we didn't have any active monitoring on performance, various problems obviously managed to sneak in.
 
+# If you don't know Lighthouse, check it out first
 There are plenty of articles on how to launch Lighthouse and they contain a number of very helpful suggestions, so I won't reiterate this here. There was one issue where the advice was not particularly friendly though: "Avoid an excessive DOM size". In our case, even our home and signup pages had around 3500 DOM nodes and, considering they are fairly simple, this sounded excessive. We struggled to understand where all these nodes were coming from. All the advice was around "avoid creating too many DOM nodes" - but I just couldn't find any useful info on how do I find out where (logically in my codebase) the nodes are created. Which part of my code is the problem? It's hard to optimise until you know which component(s) you need to optimise.
 
 So, I quickly knocked out a tool to help us find the "DOM bottlenecks". And as I still lurrrrve Java (or rather: that's a tool I'm most productive in), it's in Java - sorry folks ;)
 
-The principle is actually really simple, and similar to how you'd go around finding where all the space on your hard drive goes if you suddenly run out of space. You find the biggest folder. Then the biggest folder in the biggest folder. And so on, until you something suspicious - a folder bigger than you would normally expect.
+# Find the DOM branches to trim
+The principle is actually really simple, and similar to how you'd go around finding where all the space on your hard drive goes if you suddenly run out of space. You find the biggest folder. Then the biggest folder in the biggest folder. And so on, until you see something suspicious - a folder bigger than you would normally expect.
 
 In order to do that without spending too much time writing the tool itself (ultimately it took me maybe 30mins) I decided to use JSoup (to parse the DOM tree from our website), and Jackson - to print the results nicely, as I can then easily collapse/expand JSON in IntelliJ (helpful hint: open any .json file and press **CTRL-ALT-L** to nicely indent a single massive line of JSON).
 
@@ -183,6 +185,7 @@ dependencies {
 
 Oh yes, I use Lombok for constructors, builders and other boilerplate (getters etc.) - just because Lombok is awesome and it's the first thing I always add to any Java project. Just remember to add Lombok plugin and turn on annotation processing in IntelliJ, otherwise you'll get compilation errors.
 
+# Our real-world experience
 So how did things look like for us when running on the live version?
 The first few levels of nodes looked fairly healthy, with body and direct subnodes containing around 99% of nodes each (simply a few layers of wrappers, nothing to worry about).
 But then I saw something suspicious (and here hat-tip to Vuetify for using meaningful class names in components - makes troubleshooting so much easier):
@@ -226,4 +229,5 @@ This allowed me to see that I have nearly 900 nodes in my mobile navbar. The fun
 
 This was just the beginning of trimming down the DOM tree (we're now on around 1700 nodes on localhost, so massive reduction, and still more to come) - but the key was to know which DOM "branches" to trim.
 
+# Is there anything better out there?
 If you know a better tool for this job, please leave a note in the comments below. I find it very hard to believe that such a simple problem doesn't have something already existing - but a quick google search gave me mostly results with many articles describing why large DOM is bad - not how to find your worst offenders in the DOM tree. Otherwise, feel free to report if this "micro-tool" was helpful in any way.
