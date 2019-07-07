@@ -20,6 +20,7 @@ In order to do that without spending too much time writing the tool itself (ulti
 
 The full result is in [Github Repo](https://github.com/lilianaziolek/blog-examples/tree/master/lighhouse-performance-issues) in folder **Lighthouse Performance Issues** (I have a feeling we might need more stuff to help us with Lighthouse reports).
 There are two classes in the project:
+{::options parse_block_html="true" /}
 <details><summary><b>OsboDomNode</b> - a class representing DOM in terms of what we care about: total number of child (and grand... child nodes), and some basic stats on direct children. It uses recursive functions to aggregate total number of nodes in each of the DOM elements.
 </summary>
 <p>
@@ -94,11 +95,10 @@ public class OsboDomNode {
     }
 }
 ```
-</p>
-</details>
 
-<details>
-<summary><b>OsboPerfHelper</b> - a simple runner, you put in the URL of your website (could even be localhost), it goes off, reads the DOM structure, and then we feed it into the OsboDomNode to be analysed.</summary>
+</p></details>
+
+<details><summary><b>OsboPerfHelper</b> - a simple runner, you put in the URL of your website (could even be localhost), it goes off, reads the DOM structure, and then we feed it into the OsboDomNode to be analysed.</summary>
 <p>
 
 ```java
@@ -177,10 +177,10 @@ dependencies {
 
     testCompile group: 'junit', name: 'junit', version: '4.12'
 }
-
 ```
 
 </p></details>
+{::options parse_block_html="false" /}
 
 Oh yes, I use Lombok for constructors, builders and other boilerplate (getters etc.) - just because Lombok is awesome and it's the first thing I always add to any Java project. Just remember to add Lombok plugin and turn on annotation processing in IntelliJ, otherwise you'll get compilation errors.
 
