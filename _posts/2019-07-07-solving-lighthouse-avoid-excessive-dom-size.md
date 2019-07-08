@@ -20,7 +20,7 @@ The principle is actually really simple, and similar to how you'd go around find
 
 In order to do that without spending too much time writing the tool itself (ultimately it took me maybe 30mins) I decided to use JSoup (to parse the DOM tree from our website), and Jackson - to print the results nicely, as I can then easily collapse/expand JSON in IntelliJ (helpful hint: open any .json file and press **CTRL-ALT-L** to nicely indent a single massive line of JSON).
 
-The full result is in [Github Repo](https://github.com/lilianaziolek/blog-examples/tree/master/lighhouse-performance-issues) in folder **Lighthouse Performance Issues** (I have a feeling we might need more stuff to help us with Lighthouse reports).
+The full result is in [Github Repo](https://github.com/lilianaziolek/blog-examples/tree/master/lighhouse-performance-issues) (I have a feeling we might need more stuff to help us with Lighthouse reports).
 There are two classes in the project:
 
 <details><summary><b>OsboDomNode</b> - a class representing DOM in terms of what we care about: total number of child (and grand... child nodes), and some basic stats on direct children. It uses recursive functions to aggregate total number of nodes in each of the DOM elements.
@@ -125,17 +125,6 @@ public class OsboPerfHelper {
         OsboDomNode osboDomNode = OsboDomNode.fromElement(body);
         System.out.println((Integer) osboDomNode.getAllChildNodesCount());
         printJson(osboDomNode);
-
-//        printJson(osboDomNode.getNodesWithHighestNumberOfChildren()
-//                .get(0)
-//                .getNodesWithHighestNumberOfChildren()
-//                .get(0)
-//                .getNodesWithHighestNumberOfChildren()
-//                .get(0)
-//                .getNodesWithHighestNumberOfChildren()
-//                .get(0)
-//                .getChildNodes()
-//                .get(0));
     }
 
     private static void printJson(OsboDomNode osboDomNode) throws IOException {
