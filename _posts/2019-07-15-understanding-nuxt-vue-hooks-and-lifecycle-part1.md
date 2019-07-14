@@ -44,6 +44,6 @@ None of asyncData or fetch get triggered in some specific situations when only r
 Official Nuxt documentation has a [useful diagram](https://nuxtjs.org/guide#schema) showing the order in which things are called. Let's go into a bit more details into what it means in relation to typical user-app interaction.
 
 # Example
-The code for this post (and all the more detailed follow-ups in this series) can be found on [Github]().
+The code for this post (and all the more detailed follow-ups in this series) can be found on [Github](https://github.com/lilianaziolek/blog-examples/tree/master/dry-examples).
 
 In the next post (or a few) in this series, I'll go through what exactly happens as the user navigates through the app, and will point out various techniques and gotchas related to the tools covered above. 
