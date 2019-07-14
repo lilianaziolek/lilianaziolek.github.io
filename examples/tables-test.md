@@ -5,10 +5,10 @@ tags:
 
 ---
 <table>
-<th>
-<td>H1</td>
-<td>H2</td>
-</th>
+<tr>
+<th>H1</th>
+<th>H2</th>
+</tr>
 <tr>
 <td>1</td>
 <td>2</td>
