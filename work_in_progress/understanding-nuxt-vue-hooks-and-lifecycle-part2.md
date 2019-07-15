@@ -29,14 +29,14 @@ Let's assume the user first navigates to our main page (e.g. http://localhost:30
 
 The table below shows the results of the user journey:
 
-<table>
+<table style="width:800px">
 <tr>
 <th>User location</th>
 <th>Log output</th>
 <th>What's happening?</th>
 </tr>
 
-<tr><td>(first visit) http://localhost:3000</td><td>
+<tr><td style="width:20%">(first visit) http://localhost:3000</td><td style="width:50%">
 
 *On the server, before answer returned to client:*  
 ```
@@ -57,7 +57,7 @@ The table below shows the results of the user journey:
 (LinksComponent) SSR: false [Mounted] SampleProp: Prop from main page, SampleData: Lorem Ipsum Data
 (LinksComponent) Mounted Refs: Foo With No Params,Foo X With Param1,(...)
 ```
-</td><td>
+</td><td style="width:30%">
 
 * globalMiddleware is only executed in SSR in this call
 * *AlternativeEventBus Plugin* id is different on client and server (if this is not the case for you, refresh the page, as ID on the server will change on subsequent SSR calls). That's because this plugin's code is executed on both client and server, and both sides create an object.
