@@ -29,18 +29,18 @@ Let's assume the user first navigates to our main page (e.g. http://localhost:30
 
 The table below shows the results of the user journey:
 
-<table style="width:800px">
+<table>
 <tr>
 <th>User location</th>
 <th>Log output</th>
 <th>What's happening?</th>
 </tr>
 
-<tr><td style="width:20%">(first visit) http://localhost:3000</td><td style="width:50%">
+<tr><td style="width:10%">(first visit) http://localhost:3000</td><td style="width:50%">
 
-*On the server, before answer returned to client:*  
+*On the server, before answer returned to client:*
 ```
-(AlternativeEventBus Plugin) SSR: true inject component with id: 4                                                                                                                                                                                 
+(AlternativeEventBus Plugin) SSR: true inject component with id: 4
 (NuxtServerInit) SSR: true
 (Global Middleware) SSR: true
 (LinksComponent) SSR: true [BeforeCreate]
@@ -57,7 +57,7 @@ The table below shows the results of the user journey:
 (LinksComponent) SSR: false [Mounted] SampleProp: Prop from main page, SampleData: Lorem Ipsum Data
 (LinksComponent) Mounted Refs: Foo With No Params,Foo X With Param1,(...)
 ```
-</td><td style="width:30%">
+</td><td style="width:40%">
 
 * globalMiddleware is only executed in SSR in this call
 * *AlternativeEventBus Plugin* id is different on client and server (if this is not the case for you, refresh the page, as ID on the server will change on subsequent SSR calls). That's because this plugin's code is executed on both client and server, and both sides create an object.
@@ -104,7 +104,7 @@ The table below shows the results of the user journey:
 
 * Global Middleware is processed on the client. Local is not as it was not attached to this route.
 * Mixin code from *logRouteQueryAndParams* for fetch and asyncData is now called.
-* all Vue lifecycle hooks from LinksComponent are called  
+* all Vue lifecycle hooks from LinksComponent are called
 </td></tr>
 
 <tr><td>Click on link <b>Foo X with Param1</b> => http://localhost:3000/foo/x/val1</td><td>
