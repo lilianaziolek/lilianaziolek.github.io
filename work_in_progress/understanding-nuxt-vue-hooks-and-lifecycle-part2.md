@@ -55,7 +55,7 @@ The table below shows the results of the user journey:
 (LinksComponent) SSR: false [Created] SampleProp: Prop from main page, SampleData: Lorem Ipsum Data
 (LinksComponent) Created Refs:
 (LinksComponent) SSR: false [Mounted] SampleProp: Prop from main page, SampleData: Lorem Ipsum Data
-(LinksComponent) Mounted Refs: Foo With No Params,Foo X With Param1,Foo X With Param2,Foo Y With Param1,Foo Y With Param2,Test1 With No Params,Test1 With Param1,Test1 With Param1/Param2,Test2 With No Params,Test2 With Param1,Test2 With Param1/Param2
+(LinksComponent) Mounted Refs: Foo With No Params,Foo X With Param1,(...)
 ```
 </td><td>
 
@@ -79,7 +79,7 @@ The table below shows the results of the user journey:
 (LinksComponent) SSR: false [Created] SampleProp: Test1, SampleData: Lorem Ipsum Data
 (LinksComponent) Created Refs: 
 (LinksComponent) SSR: false [Mounted] SampleProp: Test1, SampleData: Lorem Ipsum Data
-(LinksComponent) Mounted Refs: Foo With No Params,Foo X With Param1,Foo X With Param2,Foo Y With Param1,Foo Y With Param2,Test1 With No Params,Test1 With Param1,Test1 With Param1/Param2,Test2 With No Params,Test2 With Param1,Test2 With Param1/Param2
+(LinksComponent) Mounted Refs: Foo With No Params,Foo X With Param1,(...)
 ```
 </td><td>
 
@@ -98,7 +98,7 @@ The table below shows the results of the user journey:
 (LinksComponent) SSR: false [Created] SampleProp: Test32, SampleData: Lorem Ipsum Data
 (LinksComponent) Created Refs: 
 (LinksComponent) SSR: false [Mounted] SampleProp: Test2, SampleData: Lorem Ipsum Data
-(LinksComponent) Mounted Refs: Foo With No Params,Foo X With Param1,Foo X With Param2,Foo Y With Param1,Foo Y With Param2,Test1 With No Params,Test1 With Param1,Test1 With Param1/Param2,Test2 With No Params,Test2 With Param1,Test2 With Param1/Param2
+(LinksComponent) Mounted Refs: Foo With No Params,Foo X With Param1,(...)
 ```
 </td><td>
 
@@ -119,7 +119,7 @@ The table below shows the results of the user journey:
 (LinksComponent) SSR: false [Created] SampleProp: SampleProp from Foo, SampleData: Lorem Ipsum Data
 (LinksComponent) Created Refs: 
 (LinksComponent) SSR: false [Mounted] SampleProp: SampleProp from Foo, SampleData: Lorem Ipsum Data
-(LinksComponent) Mounted Refs: Foo With No Params,Foo X With Param1,Foo X With Param2,Foo Y With Param1,Foo Y With Param2,Test1 With No Params,Test1 With Param1,Test1 With Param1/Param2,Test2 With No Params,Test2 With Param1,Test2 With Param1/Param2
+(LinksComponent) Mounted Refs: Foo With No Params,Foo X With Param1,(...)
 ```
 </td><td>
 
