@@ -89,7 +89,8 @@ defaults:
       comments: true
       share: true
       related: false
-      toc: true
+      toc: false
+      classes: wide
   # _pages
   - scope:
       path: "_pages"
