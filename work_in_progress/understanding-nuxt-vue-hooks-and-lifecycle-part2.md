@@ -9,7 +9,7 @@ tags:
 
 ---
 
-This is part 2 of mini-series - Understanding Nuxt & Vue hooks and lifecycle. You can start with [Part 1 here](https://tech.onestopbeauty.online/front-end/understanding-nuxt-vue-hooks-and-lifecycle-part1/), to make sure you are at least vaguely familiar with most of the required concepts. If you have other programming background, but not in Vue/Nuxt, you might also find useful [my other post](https://tech.onestopbeauty.online/high-level/quick-guide-to-javascript-ecosystem-from-senior-java-dev-pov/).  
+This is part 2 of mini-series - Understanding Nuxt & Vue hooks and lifecycle. You can start with [Part 1 here](https://tech.onestopbeauty.online/front-end/understanding-nuxt-vue-hooks-and-lifecycle-part1/), to make sure you are at least vaguely familiar with most of the required concepts. If you have other programming background, but not in Vue/Nuxt, you might also find [my other post](https://tech.onestopbeauty.online/high-level/quick-guide-to-javascript-ecosystem-from-senior-java-dev-pov/) useful. 
 
 # What's in the app 
 The [sample code](https://github.com/lilianaziolek/blog-examples/blob/master/dry-examples) contains very simple examples of all the mechanisms/hooks discussed in Part 1, mostly in the form of logging what's happening. Noteworthy files:
@@ -27,17 +27,10 @@ The [sample code](https://github.com/lilianaziolek/blog-examples/blob/master/dry
 # How it all works? 
 Let's assume the user first navigates to our main page (e.g. http://localhost:3000) followed by navigating to various other pages, by clicking appropriate links. You need to click on the links rather than put URLs directly in the browser if you want to observe SPA mode in action. This is because by navigating from address bar you would force SSR mode.
 
-The table below shows the results of the user journey:
+Let's take a look at an example user journey:
 
-<table>
-<tr>
-<th>User location</th>
-<th>Log output</th>
-<th>What's happening?</th>
-</tr>
-
-<tr><td style="width:10%">(first visit) http://localhost:3000</td><td style="width:50%">
-
+## (first visit) http://localhost:3000
+### What's in the logs?
 *On the server, before answer returned to client:*
 ```
 (AlternativeEventBus Plugin) SSR: true inject component with id: 4
@@ -57,18 +50,23 @@ The table below shows the results of the user journey:
 (LinksComponent) SSR: false [Mounted] SampleProp: Prop from main page, SampleData: Lorem Ipsum Data
 (LinksComponent) Mounted Refs: Foo With No Params,Foo X With Param1,(...)
 ```
-</td><td style="width:40%">
-
+### What just happened? 
 * globalMiddleware is only executed in SSR in this call
-* *AlternativeEventBus Plugin* id is different on client and server (if this is not the case for you, refresh the page, as ID on the server will change on subsequent SSR calls). That's because this plugin's code is executed on both client and server, and both sides create an object.
-* *EventBus Plugin* is only setup on the client. I'll write more about eventBus concept in a separate post 
+* *AlternativeEventBus Plugin* is setup on both sides (client and server) 
+* *EventBus Plugin* is only setup on the client 
 * beforeCreate and created are called on both server and client
 * Mounted is only called on the client
 * this.$refs are only populated in Mounted
-</td></tr>
+### Where did we go wrong?
+Imagine you have code somewhere in middleware or fetch and you register `this.$eventBus.$on` event listener. Then, based on some user interaction, you dispatch an event via `this.$eventBus.$emit`. Things don't work - why? 
 
-<tr><td>Click on link <b>Test1 with Param 1</b> => http://localhost:3000/test1/val1</td><td>
+As you might notice, *AlternativeEventBus Plugin* **id** is different on client and server (if this is not the case for you, refresh the page, as ID on the server will change on subsequent SSR calls). That's because this plugin's code is executed on both client and server, and both sides create an object. Middleware and fetch are only executed in SRR on first call, that is, your listener is registered on the SSR instance of eventBus. The client-interaction code runs in browser, so your emit triggers on the client-side instance of eventBus. Not the same instance - communication does not happen.
 
+In reality, such eventBus plugin, most likely, doesn't make sense in dual (SSR/client) mode. The main usage for eventBus might be to e.g. have your login mechanism publish an event that user has just logged in, so that other parts of code can react and, for example, fetch extra user data into VueX. That will always happen fully on the client so it makes more sense to make such plugin client-side only. This way, if somebody tries to register to event in SSR code, they will get a nice error saying that eventBus is undefined - rather than allowing them to register on an instance that will never receive any events.  
+
+
+## Click on link **Test1 with Param 1** => http://localhost:3000/test1/val1
+### What's in the logs?
 *In this, and all the following calls everything happens on the client (browser) side only :*
 ```
 (Global Middleware) SSR: false
@@ -81,15 +79,15 @@ The table below shows the results of the user journey:
 (LinksComponent) SSR: false [Mounted] SampleProp: Test1, SampleData: Lorem Ipsum Data
 (LinksComponent) Mounted Refs: Foo With No Params,Foo X With Param1,(...)
 ```
-</td><td>
-
+### What just happened?
 * Global Middleware, and now also local middleware, are processed on the client.
-* Mixin code from *logRouteQueryAndParams* for fetch and asyncData is now called. Note, it was not called on home page - that's because index.vue does not include it as mixin, and _param2.vue does. LinksComponent does contain this mixin too, but **asyncData and fetch are not called for components**
+* Mixin code from *logRouteQueryAndParams* for fetch and asyncData is now called
 * all Vue lifecycle hooks from LinksComponent are called again, because the route has changed and the instance of LinksComponent that was used in index.vue would now be destroyed and a new one created 
-</td></tr>
+### Where did we go wrong?
+Fetch and asyncData was not called on home page but it was on this page, why? That's because index.vue does not include it as mixin, and _param2.vue does. LinksComponent does contain this mixin too, but **asyncData and fetch are not called for components**. If you have a situation where your data does not seem to populate your UI, always double check if your fetching code is in a page, not in a component.
 
-<tr><td>Click on link <b>Test2 with Param1/Param2</b> => http://localhost:3000/test2/val1/val2</td><td>
-
+## Click on link **Test2 with Param1/Param2** => http://localhost:3000/test2/val1/val2
+### What's in the logs?
 ```
 (Global Middleware) SSR: false
 (Mixin) /test2/val1/val2AsyncData: {"param1":"val1","param2":"val2"}
@@ -100,15 +98,13 @@ The table below shows the results of the user journey:
 (LinksComponent) SSR: false [Mounted] SampleProp: Test2, SampleData: Lorem Ipsum Data
 (LinksComponent) Mounted Refs: Foo With No Params,Foo X With Param1,(...)
 ```
-</td><td>
-
+### What just happened?
 * Global Middleware is processed on the client. Local is not as it was not attached to this route.
 * Mixin code from *logRouteQueryAndParams* for fetch and asyncData is now called.
 * all Vue lifecycle hooks from LinksComponent are called
-</td></tr>
 
-<tr><td>Click on link <b>Foo X with Param1</b> => http://localhost:3000/foo/x/val1</td><td>
-
+## Click on link **Foo X with Param1** => http://localhost:3000/foo/x/val1
+### What's in the logs?
 ```
 (Global Middleware) SSR: false
 (Mixin) /foo/x/val1AsyncData: {"id":"val1"}
@@ -121,27 +117,35 @@ The table below shows the results of the user journey:
 (LinksComponent) SSR: false [Mounted] SampleProp: SampleProp from Foo, SampleData: Lorem Ipsum Data
 (LinksComponent) Mounted Refs: Foo With No Params,Foo X With Param1,(...)
 ```
-</td><td>
-
+### What just happened?
 * Global Middleware is processed on the client.
-* Mixin code from *logRouteQueryAndParams* for fetch and asyncData is now called - TWICE! This is because both foo.vue, and foo/x/_id.vue include the mixin, and both are pages. In reality, you wouldn't normally have the same fetch included in parent and nested route, so the fetch/asyncData would not be doing the same thing.
+* Mixin code from *logRouteQueryAndParams* for fetch and asyncData is now called - TWICE! This is because both foo.vue, and foo/x/_id.vue include the mixin, and both are pages. In reality, you wouldn't normally have the same fetch (from mixin) included in parent and nested route, so the fetch/asyncData would not be doing the same thing.
 * all Vue lifecycle hooks from LinksComponent are called
-</td></tr>
 
-<tr><td>Click on link <b>Foo Y with Param2</b> => http://localhost:3000/foo/x/val1</td><td>
-
+## Click on link **Foo Y with Param2** => http://localhost:3000/foo/x/val1
+### What's in the logs?
 ```
 (Global Middleware) SSR: false
 (Mixin) /foo/y/val1AsyncData: {"id":"val1"}
 (Mixin) /foo/y/val1Fetch: {"id":"val1"}
 ```
-</td><td>
-
-* Oh dear! What just happened?! Why is this output so different than for Foo X? This is because we are navigating within a nested route now. The app is smart enough to know that the shell (foo.vue) has not changed between foo/x/val1 and foo/y/val1 - it's only the nested part (x/_id.vue vs y/_id.vue) that has changed. Therefore, there is no point regenerating anything related to foo.vue. We only execute what's specific to y/_id.vue - and this file does not contain a separate LinksComponent, so does not generate its lifecycle methods. 
+### What just happened?
+* Oh dear! Why is this output so different than for Foo X? This is because we are navigating within a nested route now. The app is smart enough to know that the shell (foo.vue) has not changed between foo/x/val1 and foo/y/val1 - it's only the nested part (x/_id.vue vs y/_id.vue) that has changed. Therefore, there is no point regenerating anything related to foo.vue. We only execute what's specific to y/_id.vue - and this file does not contain a separate LinksComponent, so does not generate its lifecycle methods. 
 * Global Middleware is still processed on the client.
 * Mixin code from *logRouteQueryAndParams* for fetch and asyncData is now called - but only for foo/y/_id.vue
-</td></tr>
+### Where did we go wrong?
+We completely misunderstood/didn't even read what nested components are, so at one point we had a structure like in foo route, but foo.vue page did not include `<router-view>`. The routing was working fine, but the fetch was then only called for route change - not params change. For example, if you went from `/foo/x/1` to `/foo/x/2` - the fetch for */foo/x/2* would not be called. But if you went from `/foo/x/1` to `/test1` and then to `/foo/x/2`, then fetch is called.
+If you are in similar situation, and for some reason you need to make some changes in foo.vue data, then your best option is to add watch on route, i.e.:
+```javascript
+watch: {
+    '$route'(to, from) {
+        // whatever you need to refresh goes here
+        // you can get route (URL) params and query arguments before and after from `to` and `from` method parameters
+    }
+}
+```
 
-</table>
+# Play yourself!
+I hope the above go-through makes sense - but nothing will be as enlightening as taking this example project and playing with it yourself. Add hooks, extend existing code, navigate through the app and observe what happens. Let me know if anything is unclear!
 
- 
+In the last part, coming up soon, I'll summarise both parts with a short neat table - stay tuned! 
