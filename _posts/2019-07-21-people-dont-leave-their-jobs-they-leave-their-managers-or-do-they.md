@@ -1,10 +1,11 @@
 ---
-title:  "People don't leave their jobs, they leave their managers" - or do they?
+title:  People don't leave their jobs, they leave their managers - or do they?
 categories:
   - opinions
-tags:
+tags: 
   - career
   - discuss
+
 ---
 
 Every now and again I come across this "pearl of wisdom" (in slightly different variations):
