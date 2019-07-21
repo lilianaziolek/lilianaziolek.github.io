@@ -5,14 +5,13 @@ categories:
 tags:
   - career
   - discuss
-
 ---
 
 Every now and again I come across this "pearl of wisdom" (in slightly different variations):
 
 > People don't leave bad jobs / companies, they leave because of bad bosses / managers
 
-Whilst I'm sure this is true in some/many cases, I always hear internal voice of protest.
+Whilst I'm sure this is true in some/many cases, I always hear an internal voice of protest.
 
 I've been in the industry for close to 15 years. I went through a number of different bosses/projects (a lot of them contracts). In all of my career, I left due to my management exactly once.
 
@@ -27,7 +26,7 @@ All the other times?
 
 Vast majority of cases where I stopped working for my managers, it was one of two reasons (sometimes both at the same time):
 * the project was winding down anyway and it was time to move on (as a contractor you always take into account that after the active phase, the contract might not be renewed)
-* other circumstances completely outside of control of my manager (my travel-bug, or other amazing offer)
+* other circumstances completely outside of control of my manager (my travel-bug, or another amazing offer)
 
 In all these cases I always made an effort to explain my reasons to my boss. In all cases I found understanding, we split our ways with no hard feelings, and in fact some of my ex-bosses became my again-bosses later on.
 
@@ -35,4 +34,4 @@ I really wish this quote stopped doing rounds, because I feel it might be puttin
 
 So to all of them, take my word: **Sometimes a person handing in your notice is really not your fault, and there is absolutely nothing you could have done to prevent this.**
 
-What were your reasons for leaving your role? What's your ratio of bad-boss-vs-other-reasons?
+What were your reasons for leaving your role? What's your ratio of bad-boss-vs-other-reasons? Was I very lucky - or are "bad bosses" not that common after all?
