@@ -71,7 +71,7 @@ When the page component is mounted, we subscribe to be notified about any open p
 
 We will create a mixin and then import it in any **page** that needs to have this functionality.
 
-mobileBackButtoPageMixin.js (subscription part)
+mobileBackButtonPageMixin.js (subscription part)
 ```javascript
 export const mobileBackButtonPageMixin = {
     data() {
@@ -101,7 +101,7 @@ export const mobileBackButtonPageMixin = {
 ```
 
 ## Notify from child components that a dialog is open
-In every component that can open a popup we need to send a notification (`dialogOpen`) to eventBus, this will allow tracking if any popups are open. Additionally, the component needs to subscribe to `closeAllDialogs` so that a request that dialog is closed can be made (when back button is pressed on mobile). 
+In every component that can open a popup we need to send a notification (`dialogOpen`) to eventBus, this will allow tracking if any popups are open. Additionally, the component needs to subscribe to `closeAllDialogs` so that a request to close dialog can be made (when back button is pressed on mobile). 
  Again, we will use a mixin.
 
 mobileBackButtonDialogComponentMixin.js
@@ -154,7 +154,7 @@ Note that you can have more than one popup in a component - you would simply add
 ## Intercept back navigation, close popup instead if appropriate
 To get notified about route changes, we need to add two methods to the page that contains the popup (**important** - this has to be a page, and not a component).
 
-mobileBackButtoPageMixin.js (intercept part)
+mobileBackButtonPageMixin.js (intercept part)
 ```javascript
 export const mobileBackButtonPageMixin = {
     ...
